@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get 'welcome/index'
+  root to: "welcome#index"
+  resources :sessions, only: [:create, :destroy]
+  get 'dashboard/show'
+  get '/auth/auth0/callback' => 'sessions#create'
+  # get '/auth/failure' => 'auth0#failure'
+  get '/auth/logout' => 'sessions#destroy'
 end

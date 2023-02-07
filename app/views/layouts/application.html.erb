@@ -7,9 +7,17 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "bootstrap.bundle.min" %>
   </head>
 
   <body>
+  <!-- Place a login button anywhere on your application -->
+  <div class="container">
+    <%= button_to 'Login', '/auth/auth0', method: :post, data: { turbo: false } %>  |
+    <!-- Place a logout button anywhere on your application -->
+    <%= button_to 'Logout', 'auth/logout', method: :get, data: { turbo: false } %>
     <%= yield %>
+      <strong>Session:</strong> <%= session[:user] %>
+  </div>
   </body>
 </html>
